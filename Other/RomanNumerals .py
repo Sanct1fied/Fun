@@ -1,5 +1,5 @@
 def arabictoroman():
-    user_num = int(input("what is the number you want translated? (Up to 1000):"))
+    user_num = int(input("what is the number you want translated? (Up to 3999):"))
     global number
     number = [char for char in str(user_num)]
 
@@ -15,8 +15,14 @@ def arabictoroman():
         nd_digit = two_digits()
         st_digit = one_digit()
         print(rd_digit, nd_digit, st_digit, sep='')
-    if user_num == 1000:
-        print("M")
+    elif len(number) == 4:
+        th_digit = fourth_digit()
+        rd_digit = three_digits()
+        nd_digit = two_digits()
+        st_digit = one_digit()
+        print(th_digit,rd_digit, nd_digit, st_digit, sep='')
+
+
 
 
 def romantoarabic():
@@ -78,6 +84,12 @@ def three_digits():
     elif int(number[-2]) == 9:
         third_digit = "CM"
     return third_digit
+
+def fourth_digit():
+    four_digit = ''
+    if int(number[-4]) <=3:
+        four_digit = "M" * int(number[-4])
+    return four_digit
 
 while True:
     print("would you like to translate denary into roman numerals (dtr)?")
